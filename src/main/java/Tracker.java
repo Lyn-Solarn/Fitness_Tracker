@@ -9,8 +9,7 @@ public class Tracker {
         log.add(entry);
     }
 
-    //TO-DO
-    public TrackerEntry getEntry() {
+    public TrackerEntry getLastEntry() {
         return log.getLast();
     }
 
@@ -18,14 +17,12 @@ public class Tracker {
         return log.get(index);
     }
 
-    public boolean removeEntry(int index) {
+    public void removeEntry(int index) {
         try {
             log.remove(index);
         } catch (Exception e) {
             System.out.println("Invalid index at " + index);
-            return false;
         }
-        return true;
     }
 
     public int getSize() {
@@ -38,7 +35,6 @@ public class Tracker {
         int count = 1;
         for (TrackerEntry item : log) {
             returnString += (count++ + ". " + item + "\n");
-
         }
         return returnString;
     }

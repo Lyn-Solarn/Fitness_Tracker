@@ -4,8 +4,7 @@ public class Workout {
     private static final ArrayList<String> types = new ArrayList<>();
     private static final ArrayList<Integer> multipliers = new ArrayList<>();
 
-    private String type;
-    private int multiplier;
+    private final int index;
 
     static {
         types.add("Running");
@@ -21,23 +20,14 @@ public class Workout {
     }
 
     public Workout(int index) {
-        this.type = types.get(index);
-        this.multiplier = multipliers.get(index);
+        this.index = index;
     }
 
     public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+        return types.get(index);
     }
 
     public int getPointsMultiplier() {
-        return multiplier;
-    }
-
-    public void setPointsMultiplier(int pointsMultiplier) {
-        this.multiplier = pointsMultiplier;
+        return multipliers.get(index);
     }
 }
