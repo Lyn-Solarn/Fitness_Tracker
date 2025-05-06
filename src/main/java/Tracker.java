@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tracker {
-    private List<TrackerEntry> log = new ArrayList<>();
+    private final List<TrackerEntry> log = new ArrayList<>();
 
     //TO-DO
     public void addEntry(TrackerEntry entry) {
@@ -31,11 +31,11 @@ public class Tracker {
 
     @Override
     public String toString() {
-        String returnString = "";
+        StringBuilder returnString = new StringBuilder();
         int count = 1;
         for (TrackerEntry item : log) {
-            returnString += (count++ + ". " + item + "\n");
+            returnString.append(count++).append(". ").append(item).append("\n");
         }
-        return returnString;
+        return returnString.toString();
     }
 }
