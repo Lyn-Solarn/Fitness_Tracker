@@ -7,14 +7,24 @@ public class UserStatistics {
         this.workoutTracker = workoutTracker;
     }
 
-    //TO-DO
     public int totalPoints() {
-        return 0;
+        int totalPoints = 0;
+        for(int i=0; i < workoutTracker.getSize(); i++) {
+            totalPoints += workoutTracker.getEntry(i).getPointsEarned();
+        }
+        return totalPoints;
+    }
+    
+    public Time totalTime() {
+        int totalTime = 0;
+        for(int i=0; i < workoutTracker.getSize(); i++) {
+            totalTime += workoutTracker.getEntry(i).getDuration().getMinutes();
+        }
+        return new Time(totalTime);
     }
 
-    //TO-DO
     public Time averageTime() {
-        return null;
+        return new Time(totalTime().getMinutes()/workoutTracker.getSize());
     }
 
     //TO-DO

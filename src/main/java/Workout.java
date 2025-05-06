@@ -1,10 +1,28 @@
-public abstract class Workout {
-    private String type;
-    private int pointsMultiplier;
+import java.util.ArrayList;
 
-    public Workout(String type, int pointsMultiplier) {
-        this.type = type;
-        this.pointsMultiplier = pointsMultiplier;
+public class Workout {
+    private static final ArrayList<String> types = new ArrayList<>();
+    private static final ArrayList<Integer> multipliers = new ArrayList<>();
+
+    private String type;
+    private int multiplier;
+
+    static {
+        types.add("Running");
+        multipliers.add(2);
+        types.add("Walking");
+        multipliers.add(1);
+        types.add("Swimming");
+        multipliers.add(3);
+        types.add("Cycling");
+        multipliers.add(3);
+        types.add("Weightlifting");
+        multipliers.add(5);
+    }
+
+    public Workout(int index) {
+        this.type = types.get(index);
+        this.multiplier = multipliers.get(index);
     }
 
     public String getType() {
@@ -20,6 +38,6 @@ public abstract class Workout {
     }
 
     public void setPointsMultiplier(int pointsMultiplier) {
-        this.pointsMultiplier = pointsMultiplier;
+        this.multiplier = pointsMultiplier;
     }
 }

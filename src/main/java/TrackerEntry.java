@@ -7,9 +7,8 @@ public class TrackerEntry {
         this.duration = duration;
     }
 
-    //TO-DO
     public int getPointsEarned() {
-        return 0;
+        return workout.getPointsMultiplier() * duration.getMinutes();
     }
 
     public Workout getWorkout() {

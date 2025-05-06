@@ -13,14 +13,12 @@ public class Time {
         this.minutes = minutes;
     }
 
-    //TO-DO
     public int toHours() {
-        return 0;
+        return minutes/60;
     }
 
-    //TO-DO
     @Override
     public String toString() {
-        return "";
+        return toHours() + " hr " + minutes%60 + " min";
     }
 }
