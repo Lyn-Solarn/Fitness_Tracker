@@ -7,6 +7,11 @@ public class UserStatistics {
         this.workoutTracker = workoutTracker;
     }
 
+    public UserStatistics(String username) {
+        this.username = username;
+        this.workoutTracker = new Tracker();
+    }
+
     public int totalPoints() {
         int totalPoints = 0;
         for(int i=0; i < workoutTracker.getSize(); i++) {
@@ -29,12 +34,52 @@ public class UserStatistics {
 
     //TO-DO
     public String mostPopularWorkout() {
-        return "";
+        //if you don't initialize popularWorkout intellij will be angry
+        String popularWorkout = workoutTracker.getEntry(0).getWorkout().getType();
+        String currentWorkout;
+        int highestCount = 0;
+        int counter = 0;
+        //this is probably a terrible way of doing this. Too bad!
+        for (int i = 0; i < workoutTracker.getSize(); i++) {
+            currentWorkout = workoutTracker.getEntry(i).getWorkout().getType();
+            for (int k = 0; k < workoutTracker.getSize(); k++) {
+                if (currentWorkout.equals(workoutTracker.getEntry(k).getWorkout().getType())) {
+                    counter++;
+                }
+            }
+            if (counter > highestCount) {
+                highestCount = counter;
+                popularWorkout = currentWorkout;
+            }
+            counter = 0;
+        }
+        //big o of like 5 million, but it gets the job done
+        return popularWorkout;
     }
 
     //TO-DO
     public String leastPopularWorkout() {
-        return "";
+        //if you don't initialize hatedWorkout intellij will be angry
+        String hatedWorkout = workoutTracker.getEntry(0).getWorkout().getType();
+        String currentWorkout;
+        int lowestCount = Integer.MAX_VALUE;
+        int counter = 0;
+        //this is probably a terrible way of doing this. Too bad!
+        for (int i = 0; i < workoutTracker.getSize(); i++) {
+            currentWorkout = workoutTracker.getEntry(i).getWorkout().getType();
+            for (int k = 0; k < workoutTracker.getSize(); k++) {
+                if (currentWorkout.equals(workoutTracker.getEntry(k).getWorkout().getType())) {
+                    counter++;
+                }
+            }
+            if (counter < lowestCount) {
+                lowestCount = counter;
+                hatedWorkout = currentWorkout;
+            }
+            counter = 0;
+        }
+        //big o of like 5 million, but it gets the job done
+        return hatedWorkout;
     }
 
     public String getUsername() {

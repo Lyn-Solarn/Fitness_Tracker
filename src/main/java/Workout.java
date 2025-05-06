@@ -34,7 +34,7 @@ public class Workout {
     }
 
     public int getPointsMultiplier() {
-        return pointsMultiplier;
+        return multiplier;
     }
 
     public void setPointsMultiplier(int pointsMultiplier) {
